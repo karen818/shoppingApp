@@ -1,12 +1,15 @@
 'use strict'
 
 app.controller('ShopController', function($scope) {
-    $scope.quantity = 0;
+    $scope.bagQuantity = 0;
+    $scope.qty = 0;
+    console.log($scope.selectQty);
 
     $scope.addToBag = function(qty){
-        console.log('clicked');
-        $scope.qty = $scope.quantity + $scope.qty;
-
+        console.log($scope.selectQty);
+        var qty = $scope.qty;
+        console.log($scope.qty);
+        $scope.bagQuantity = $scope.bagQuantity + $scope.qty;
     }
     $scope.teas = [
       {
@@ -40,7 +43,7 @@ app.controller('ShopController', function($scope) {
           "ingredients": "hot sauce, iron, beetle nut, fresco, blarney, raw mashed potato",
           "caffeineScale": 38,
           "price": 4991,
-          "inStock": true,
+          "inStock": false,
           "rating": 4,
           "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
           "__v": 0,

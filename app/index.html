@@ -39,10 +39,10 @@
           <div class="col-lg-12">
             <form class="navbar-form formBG">
               <div class="form-group col-lg-4">
-                <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchByName">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" placeholder="Search by Name" ng-model="searchByName.name">
               </div>
               <div class="form-group col-lg-4">
-                  <select class="searchBy form-control browser-default" name="searchCat" ng-model="searchByCat">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<select class="searchBy form-control browser-default" name="searchCat" ng-model="searchByCat.categories">
                     <option value="" ng-selected="true">Search by Category</option>
                     <option value="spring">spring</option>
                     <option value="summer">summer</option>
@@ -58,14 +58,14 @@
               </div>
               <div class="form-group col-lg-4">
                 <div class="pull-right">
-                  <button type="button" name="checkout" class="btn btn-lg btn-primary" ng-click="checkout()">Checkout | Bag: {{quantity}}</button>
+                  <button type="button" name="checkout" class="btn btn-lg btn-primary" ng-click="checkout()">Checkout&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;{{bagQuantity}}</button>
                 </div>
               </div>
             </form>
             <table class="table">
               <col width="25%">
-              <col width="30%">
-              <col width="30%">
+              <col width="25%">
+              <col width="35%">
               <col width="15%">
               <thead>
                 <th></th>
@@ -73,18 +73,16 @@
                 <th><h3>Information</h3></th>
                 <th>
                   <div class="form-group">
-                      <select class="sortBy form-control browser-default" name="priceOrder" ng-model="priceOrder">
-                        <option value="-sort" ng-selected="true">Sort by Price</option>
-                        <option value="-under20">Under $20</option>
-                        <option value="-under40">Under $40</option>
-                        <option value="-under60">Under $60</option>
-                        <option value="-under80">Under $80</option>
+                      <select class="sortBy form-control browser-default" name="priceOrder" ng-model="price">
+                        <option value="sort" name="price" ng-selected="true">Sort by Price</option>
+                        <option value="price">Low to High</option>
+                        <option value="-price">High to Low</option>
                       </select>
                   </div>
                 </th>
               </thead>
               <tbody>
-                <tr ng-repeat="tea in teas | filter:searchByName | filter:searchByCat | orderBy:priceOrder">
+                <tr ng-repeat="tea in teas | filter:searchByName | filter:searchByCat | orderBy:price">
                   <td><img ng-src="{{tea.imageUrl}}" alt="tea image"></td>
                   <td><p><strong>{{tea.name | uppercase}}</strong><br>
                     <strong>Categories: </strong></p>
@@ -94,19 +92,18 @@
                   </td>
                   <td>
                     <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}<br>
-                    <strong>Price:</strong> {{tea.price/100 | currency}}<br>
+                    <strong>Price:</strong> {{tea.price/100 | currency}} per lb.<br>
                     <strong>In Stock?</strong>
                     <span ng-if="tea.inStock">Yes</span><br>
-                    <span ng-if="!tea.inStock">Sorry, this product is currently unavailable.</span><br>
-                    <!-- <strong>In Stock?</strong> {{ inStock(tea.inStock) }} -->
-
+                    <span ng-if="!tea.inStock">Sorry, currently unavailable.</span><br>
+                    <strong>Ingredients: </strong> {{tea.ingredients}}
                   </td>
                   <td>
                     <div class="form-group"><strong>Quantity</strong>
-                        <select class="sortBy form-control browser-default" name="quantity" ng-model="quantity">
+                        <select class="sortBy form-control browser-default" name="selectQty" ng-model="selectQty">
                           <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
                         </select>
-                        <button class="btn btn-small" type="button" name="addTea" ng-click="teas.addToBag(qty)">Add to bag</button>
+                        <button class="btn btn-small" type="button" name="addTea" ng-click="addToBag(qty)">Add to bag</button>
                     </div>
                   </td>
                 </tr>

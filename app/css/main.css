@@ -96,8 +96,16 @@ ul {
   padding-top: 30px;
 }
 
+.glyphicon {
+  color: #F9DC5C;
+  font-size: 90%;
+}
 .glyphicon-leaf {
   color: #C2EABD;
+}
+
+.glyphicon-shopping-cart {
+  color: rgba(1, 25, 54, 1);
 }
 
 .navbar,
