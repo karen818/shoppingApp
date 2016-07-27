@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" ng-app='shoppingApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping App</title>
+  <!-- styles -->
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link href="https:/maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="./css/bootstrapTheme.css"rel="stylesheet" media="screen">
+  <link href="./css/main.css" rel="stylesheet" media="screen">
+</head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">MEAN Tea</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      <div ng-controller="ShopController">
+        <div class="well header">
+          <h1>Welcome to MEAN Tea!</h1>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <form class="navbar-form formBG">
+              <div class="form-group col-lg-4">
+                <input type="text" class="form-control" placeholder="Search by Name" ng-model="searchByName">
+              </div>
+              <div class="form-group col-lg-4">
+                  <select class="searchBy form-control browser-default" name="searchCat" ng-model="searchByCat">
+                    <option value="" ng-selected="true">Search by Category</option>
+                    <option value="spring">spring</option>
+                    <option value="summer">summer</option>
+                    <option value="autumn">autumn</option>
+                    <option value="winter">winter</option>
+                    <option value="dark">dark</option>
+                    <option value="cold">cold</option>
+                    <option value="dry">dry</option>
+                    <option value="hot">hot</option>
+                    <option value="lucid">lucid</option>
+                    <option value="awesome">awesome</option>
+                  </select>
+              </div>
+              <div class="form-group col-lg-4">
+                <div class="pull-right">
+                  <button type="button" name="checkout" class="btn btn-lg btn-primary" ng-click="checkout()">Checkout | Bag: {{quantity}}</button>
+                </div>
+              </div>
+            </form>
+            <table class="table">
+              <col width="25%">
+              <col width="30%">
+              <col width="30%">
+              <col width="15%">
+              <thead>
+                <th></th>
+                <th><h3>Tea</h3></th>
+                <th><h3>Information</h3></th>
+                <th>
+                  <div class="form-group">
+                      <select class="sortBy form-control browser-default" name="priceOrder" ng-model="priceOrder">
+                        <option value="-sort" ng-selected="true">Sort by Price</option>
+                        <option value="-under20">Under $20</option>
+                        <option value="-under40">Under $40</option>
+                        <option value="-under60">Under $60</option>
+                        <option value="-under80">Under $80</option>
+                      </select>
+                  </div>
+                </th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="tea in teas | filter:searchByName | filter:searchByCat | orderBy:priceOrder">
+                  <td><img ng-src="{{tea.imageUrl}}" alt="tea image"></td>
+                  <td><p><strong>{{tea.name | uppercase}}</strong><br>
+                    <strong>Categories: </strong></p>
+                    <ul>
+                      <li ng-repeat="category in tea.categories"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>  {{category}}</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}<br>
+                    <strong>Price:</strong> {{tea.price/100 | currency}}<br>
+                    <strong>In Stock?</strong>
+                    <span ng-if="tea.inStock">Yes</span><br>
+                    <span ng-if="!tea.inStock">Sorry, this product is currently unavailable.</span><br>
+                    <!-- <strong>In Stock?</strong> {{ inStock(tea.inStock) }} -->
+
+                  </td>
+                  <td>
+                    <div class="form-group"><strong>Quantity</strong>
+                        <select class="sortBy form-control browser-default" name="quantity" ng-model="quantity">
+                          <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
+                        </select>
+                        <button class="btn btn-small" type="button" name="addTea" ng-click="teas.addToBag(qty)">Add to bag</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- <div class="col-lg-2">&nbsp;</div> -->
+        </div>
+
+      </div>
+    </div>
+    <!-- scripts -->
+    <script src="https:/code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https:/maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https:/ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js" type="text/javascript"></script>
+    <script src="./js/app.js" type="text/javascript"></script>
+    <script src="./js/controllers.js" type="text/javascript"></script>
+    <script src="./js/directives.js" type="text/javascript"></script>
+    <script src="./js/filters.js" type="text/javascript"></script>
+    <script src="./js/services.js" type="text/javascript"></script>
+  </body>
+</html>

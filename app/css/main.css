@@ -1,0 +1,137 @@
+/*
+#ED254E: rgba(237, 37, 78, 1);
+#F9DC5C: rgba(249, 220, 92, 1);
+#C2EABD: rgba(194, 234, 189, 1);
+#O11936: rgba(1, 25, 54, 1);
+#465362: rgba(70, 83, 98, 1);
+*/
+body {
+  background-image: url('img-04.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  -o-background-size: contain;
+  overflow-x: hidden;
+  background-color: #C2EABD;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2em;
+}
+
+
+h1, h2, h3, h4, h5,
+.navbar-brand {
+  font-weight: 700;
+  font-family: 'Amatic SC', cursive;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+
+h3 {
+  color: #C2EABD;
+  font-size: 220%;
+  text-align: left;
+}
+
+h5 {
+  color: #465362;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  border: 4px solid #C2EABD;
+}
+
+input.form-control {
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+span {
+  display: inline;
+}
+
+table {
+  background-color: #465362;
+  border-radius: 5px;
+  color: #F9DC5C;
+}
+
+ul {
+  line-height: 110%;
+}
+
+
+.bold {
+  font-weight: 700;
+}
+
+.btn {
+  background-color: #F9DC5C;
+  color: rgba(1, 25, 54, 1);
+  font-weight: 700;
+}
+
+.btn:hover {
+  background-color: #C2EABD;
+  color: rgba(1, 25, 54, 1);
+}
+
+.formBG {
+  background-color: #465362;
+  border-radius: 5px;
+  height: 100px;
+  padding-top: 30px;
+}
+
+.glyphicon-leaf {
+  color: #C2EABD;
+}
+
+.navbar,
+.navbar a,
+.navbar-brand a{
+  background-color: #465362;
+  color: #F9DC5C;
+}
+
+.navbar a:hover {
+  color: #465362;
+}
+
+.navbar-brand {
+  font-size: 200%;
+}
+
+.panel {
+  font-weight: 700;
+  background-color: #C2EABD;
+  border: 2px solid #C2EABD;
+  text-align: center;
+}
+
+.searchBy,
+.sortBy {
+  color: #ccc;
+}
+
+.well {
+  background-color: #C2EABD;
+  border-radius: 200px;
+  border: 4px solid #b6bdef;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 30px;
+}
