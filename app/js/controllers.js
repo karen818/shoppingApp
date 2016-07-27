@@ -2,14 +2,13 @@
 
 app.controller('ShopController', function($scope) {
     $scope.bagQuantity = 0;
-    $scope.qty = 0;
-    console.log($scope.selectQty);
 
     $scope.addToBag = function(qty){
-        console.log($scope.selectQty);
-        var qty = $scope.qty;
+        console.log(qty);
+        $scope.qty = $scope.qty;
         console.log($scope.qty);
         $scope.bagQuantity = $scope.bagQuantity + $scope.qty;
+        console.log($scope.bagQuantity);
     }
     $scope.teas = [
       {
